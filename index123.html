@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Princess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@700&family=Playfair+Display:ital,wght@0,600;1,700&family=Grand+Hotel&family=Montserrat:wght@900&family=Cinzel:wght@700&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; min-height: 100vh; font-family: 'Playfair Display', serif; background-image: url('https://i.ibb.co/twph1Cyt/Gemini-Generated-Image-ftihuvftihuvftih.png'); background-size: cover; background-position: center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; box-sizing: border-box; overflow-x: hidden; position: relative; }
+        .bg-floating-img { position: absolute; object-fit: cover; border-radius: 12px; border: 2px solid rgba(255, 255, 255, 0.4); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); z-index: 1; opacity: 0.9; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .bg-floating-img:hover { transform: scale(1.08) !important; box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4); }
+        .img-1 { width: 160px; height: 160px; top: 8%; left: 6%; transform: rotate(-12deg); }
+        .img-2 { width: 140px; height: 180px; top: 12%; right: 8%; transform: rotate(15deg); }
+        .img-3 { width: 190px; height: 130px; bottom: 10%; left: 4%; transform: rotate(8deg); }
+        .img-4 { width: 150px; height: 150px; bottom: 15%; right: 7%; transform: rotate(-10deg); }
+        .img-5 { width: 170px; height: 130px; top: 45%; left: 82%; transform: rotate(5deg); }
+
+        .letter-card { 
+            background: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 24px; 
+            padding: 50px 40px; 
+            max-width: 750px; 
+            width: 90%; 
+            text-align: center; 
+            z-index: 10; 
+            margin: 40px 20px; 
+            box-sizing: border-box; 
+        }
+
+        /* Highly readable font for the paragraph */
+        .love-letter { font-size: 1.4rem; line-height: 1.6; margin: 0; font-family: Arial, sans-serif; }
+        .p-color { color: #ff69b4; font-weight: 700; text-shadow: 1px 1px 2px rgba(255,255,255,0.7); }
+        .g-color { color: #87ceeb; font-weight: 700; text-shadow: 1px 1px 2px rgba(255,255,255,0.7); }
+        .heart { color: #ff69b4; font-size: 2.2rem; display: block; margin-top: 20px; animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
+        .pop-banner {
+            position: fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            z-index: 100;
+            font-family: 'Sacramento', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            width: 90%;
+            max-width: 900px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pop-banner.active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+        .star-pop { position: fixed; font-size: 2.5rem; z-index: 20001; pointer-events: none; animation: explodeAndFade 1.5s forwards ease-out; }
+        @keyframes explodeAndFade { 0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; } 100% { transform: translate(var(--mx), var(--my)) scale(1.5); opacity: 0; } }
+        #fullscreen-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.88); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 20000; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+        #fullscreen-modal.active { opacity: 1; pointer-events: auto; }
+        
+        .pink-cloud-banner { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); padding: 15px 40px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.3); }
+        
+        .mixed-letter { display: inline-block; font-size: 2.2rem; font-weight: 900; margin: 0 2px; white-space: pre; background-image: var(--char-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #modal-img { max-width: 90%; max-height: 70vh; border-radius: 16px; border: 3px solid rgba(255, 255, 255, 0.8); transform: scale(0.85); transition: transform 0.4s ease; }
+        #fullscreen-modal.active #modal-img { transform: scale(1); }
+        .close-hint { margin-top: 20px; color: rgba(255, 255, 255, 0.6); }
+    </style>
+</head>
+<body>
+    <img class="bg-floating-img img-1" src="https://i.ibb.co/twgqL9BJ/2656371116-7041939546-1780076489801.png" alt="Memory 1" onclick="handleImgClick(event, this)">
+    <img class="bg-floating-img img-2" src="https://i.ibb.co/CKq90wLt/2656371116-7041939546-1780077794603.png" alt="Memory 2" onclick="handleImgClick(event, this)">
+    <img class="bg-floating-img img-3" src="https://i.ibb.co/j9nWzdGf/2656371116-7041939546-1780076946878.png" alt="Memory 3" onclick="handleImgClick(event, this)">
+    <img class="bg-floating-img img-4" src="https://i.ibb.co/j9nWzdGf/2656371116-7041939546-1780076946878.png" alt="Memory 4" onclick="handleImgClick(event, this)">
+    <img class="bg-floating-img img-5" src="https://i.ibb.co/rGB4vQ7M/2656371116-7041939546-1780078090879.png" alt="Memory 5" onclick="handleImgClick(event, this)">
+
+    <div class="letter-card">
+        <p class="love-letter">
+            <span class="p-color">Cami, my sweet girl,</span> <span class="g-color">I know we haven’t known each other for that long and we’re still building what we have, but I want you to know I love you so much.</span> <span class="p-color">No matter what you’re feeling mad, sad, or lonely I’m always going to be right by your side.</span> <span class="g-color">I care about you more than I can really explain, and you’re on my mind all the time.</span> <span class="p-color">I know I don’t always show it the way I should, especially since we don’t get as much time together as I’d like, but every moment we do have means everything to me.</span> <span class="g-color">I just wish those moments could last forever—just me and you, side by side. I love you so much, my pretty princess. – Kash</span>
+            <br>
+            <span class="p-color">I love you super duper much</span> <span class="heart">&lt;3</span>
+        </p>
+    </div>
+
+    <div id="bigBanner" class="pop-banner">Cami and kash forever and ever no matter what</div>
+
+    <div id="fullscreen-modal" onclick="closeFullscreen()">
+        <div class="pink-cloud-banner" id="cloudBanner"></div>
+        <img id="modal-img" src="" alt="Full view">
+        <div class="close-hint">Click anywhere to close</div>
+    </div>
+
+    <script>
+        let bannerTimeout;
+        const stars = ['💜', '✨', '💖', '⭐', '🥰', '✨'];
+        const phrase = "Cami and kash forever and ever no matter what";
+        const colorPalette = ['#ff69b4', '#87ceeb'];
+        const fonts = ['f-romantic', 'f-impact', 'f-luxury', 'f-dreamy'];
+
+        function buildCloudText() {
+            const cloudContainer = document.getElementById('cloudBanner');
+            cloudContainer.innerHTML = ''; 
+            for (let i = 0; i < phrase.length; i++) {
+                const span = document.createElement('span');
+                span.className = 'mixed-letter';
+                span.innerText = phrase[i];
+                if (phrase[i] !== ' ') {
+                    const color1 = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+                    const color2 = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+                    span.classList.add(fonts[Math.floor(Math.random() * fonts.length)]);
+                    span.style.setProperty('--char-gradient', `linear-gradient(to bottom, ${color1} 0%, ${color2} 100%)`);
+                }
+                cloudContainer.appendChild(span);
+            }
+        }
+        buildCloudText();
+
+        function handleImgClick(event, imgElement) {
+            const modal = document.getElementById('fullscreen-modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = imgElement.src;
+            modal.classList.add('active');
+            buildCloudText();
+            const banner = document.getElementById('bigBanner');
+            banner.classList.remove('active');
+            void banner.offsetWidth;
+            banner.classList.add('active');
+            clearTimeout(bannerTimeout);
+            bannerTimeout = setTimeout(() => { banner.classList.remove('active'); }, 2500);
+            for (let i = 0; i < 24; i++) { createBurstEmoji(); }
+        }
+
+        function createBurstEmoji() {
+            const star = document.createElement('div');
+            star.className = 'star-pop';
+            star.innerText = stars[Math.floor(Math.random() * stars.length)];
+            star.style.left = '50%'; star.style.top = '50%';
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.random() * 280 + 120;
+            star.style.setProperty('--mx', `${Math.cos(angle) * dist}px`);
+            star.style.setProperty('--my', `${Math.sin(angle) * dist}px`);
+            document.body.appendChild(star);
+            setTimeout(() => { star.remove(); }, 1500);
+        }
+
+        function closeFullscreen() { document.getElementById('fullscreen-modal').classList.remove('active'); }
+    </script>
+</body>
+</html>
